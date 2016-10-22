@@ -6,6 +6,11 @@ public class Message {
     private double freq, strength;
     public enum MsgType {CHATTER, WEATHER, SOS};
     private MsgType type;
+
+    public int getSenderID() {
+        return senderID;
+    }
+
     Message(int time, Coord position, int senderID, String content, MsgType type, double freq, double strength){
         this.time = time;
         this.position = position;
