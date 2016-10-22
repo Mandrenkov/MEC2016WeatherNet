@@ -12,7 +12,6 @@ public abstract class Transceiver {
 	protected double sendFrequency;
 	protected Random rand = new Random();
 
-
 	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double sendFrequency) {
 		this.id = id;
 		this.listenFactor = listenFactor;
@@ -20,8 +19,6 @@ public abstract class Transceiver {
 		this.sendFactor = sendFactor;
 		this.sendFrequency = sendFrequency;
 	}
-
-	public abstract double[] getFrequencyBounds();
 
 	public int getID() {
 		return this.id;

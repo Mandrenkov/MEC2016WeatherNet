@@ -4,7 +4,7 @@ public class AeroSpace {
     private double width, height;
     private ArrayList<Transceiver> listeners = new ArrayList<>();
     private Queue<Message> messages = new LinkedList<Message>();
-    private final double sendConst = 100;
+    private final double sendConst = 50;
 
     public AeroSpace(double width, double height) {
         this.width = width;
@@ -20,7 +20,8 @@ public class AeroSpace {
             Message mess = messages.poll();
             if (mess != null) {
                 for (Transceiver t : listeners) {
-                    if (t.getLocation().distanceTo(mess.getLocation()) <= sendConst * mess.getStrength()) {
+                    if (t.getLocation().distanceTo(mess.getLocation()) <= sendConst * mess.getStrength()
+                            && t.getID() != mess.getSenderID()) {
                         t.receiveMessage(mess);
                     }
                 }
@@ -28,6 +29,23 @@ public class AeroSpace {
             for (Transceiver t : listeners) {
                 for (Message m : t.sendMessages()) {
                     messages.add(m);
+                    GUI.addMessage(m);
+                }
+                if (t instanceof Buoy) {
+                    for (SatMessage satm : ((Buoy) t).sendSatMessages()) {
+                        ArrayList<Buoy> receivers = satm.getReceivers();
+                        if (receivers == null) {
+                            for (Transceiver t2 : listeners) {
+                                if (t2 instanceof Buoy) {
+                                    ((Buoy) t2).receiveSatMessage(satm);
+                                }
+                            }
+                        } else {
+                            for (Buoy receiver : satm.getReceivers()) {
+                                receiver.receiveSatMessage(satm);
+                            }
+                        }
+                    }
                 }
             }
             synchronized (this) {
