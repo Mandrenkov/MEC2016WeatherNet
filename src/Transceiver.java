@@ -43,7 +43,7 @@ public abstract class Transceiver {
 		return this.sendFactor;
 	}
 	
-	public abstract Message receiveMessage(Message message);
+	public abstract void receiveMessage(Message message);
 
 	public abstract ArrayList<Message> sendMessages();
 }

@@ -8,12 +8,14 @@ public class Buoy extends Transceiver {
         super(id, listenFactor, location, sendFactor, listenFreq, sendFreq);
     }
 
-    public void receiveMessages() {
+    public void receiveMessage(Message mess) {
         System.out.println("buoy " + this.getID() + " received " + mess.getContent());
     }
 
     public ArrayList<Message> sendMessages() {
-        Message m =  new Message((int) System.currentTimeMillis(), this.location,
-                this.id, "hello world", Message.CHATTER, 1.0, 1.0);
+        ArrayList<Message> list = new ArrayList<Message>();
+        list.add(new Message((int) System.currentTimeMillis(), this.location,
+                this.id, "hello world", Message.CHATTER, 1.0, 1.0));
+        return list;
     }
 }
