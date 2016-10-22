@@ -1,5 +1,3 @@
-import static com.sun.imageio.plugins.jpeg.JPEG.SOS;
-
 public class Message {
     private int time;
     private Coord position;
