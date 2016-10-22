@@ -29,6 +29,10 @@ public class Coord {
 		return 1;
 	}
 
+	public double distanceTo(Coord other) {
+		return getDist(this, other);
+	}
+
 	private double getDist(Coord a, Coord b){
 		return Math.sqrt(Math.pow(a.x-b.x, 2) + Math.pow(a.y-b.y, 2));
 	}
