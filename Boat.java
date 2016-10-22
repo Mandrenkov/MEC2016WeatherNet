@@ -10,4 +10,12 @@ public class Boat extends Transceiver {
 	public String getName() {
 		return this.name;
 	}
+
+	public Message send() {
+		return new Message((int) System.currentTimeMillis(), this.location, this.id, "hello world", Message.CHATTER);
+	}
+
+	public void receive(Message message) {
+
+    }
 }
