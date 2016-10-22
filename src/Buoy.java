@@ -35,4 +35,8 @@ public class Buoy extends Transceiver {
     private String senseWeather() {
         return "it's raining outside :(";
     }
+
+    public void receiveSatMessage(SatMessage satm) {
+        System.out.println("buoy " + this.getID() + " satreceived " + satm.getContent());
+    }
 }

@@ -27,6 +27,13 @@ public class AeroSpace {
             }
             for (Transceiver t : listeners) {
                 messages.addAll(t.sendMessages());
+                if (t instanceof Buoy) {
+                    for (SatMessage satm : ((Buoy) t).sendSatMessages()) {
+                        for (Buoy receiver : satm.getReceivers()) {
+                            receiver.receiveSatMessage(satm);
+                        }
+                    }
+                }
             }
             synchronized (this) {
                 try {
