@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Boat extends Transceiver {
 
 	private String name;
 	private double sendFrequency;
+	private final double chatterChance = .01;
 
 	public Boat(int id, double listenFactor, Coord location, String name, double sendFactor, double sendFrequency) {
 		super(id, listenFactor, location, sendFactor, sendFrequency);
@@ -20,8 +22,10 @@ public class Boat extends Transceiver {
 
     public ArrayList<Message> sendMessages() {
 		ArrayList<Message> list = new ArrayList<Message>();
-		list.add(new Message((int) System.currentTimeMillis(), this.location,
-				this.id, "hello world", Message.CHATTER, 1.0, 1.0));
+		if (rand.nextDouble() < this.chatterChance) {
+			list.add(new Message((int) System.currentTimeMillis(), this.location,
+					this.id, "hello world", Message.CHATTER, 1.0, 1.0));
+		}
 		return list;
 	}
 }
