@@ -26,9 +26,7 @@ public class AeroSpace {
                 }
             }
             for (Transceiver t : listeners) {
-                for (Message m : t.sendMessages()) {
-                    messages.add(m);
-                }
+                messages.addAll(t.sendMessages());
             }
             synchronized (this) {
                 try {
