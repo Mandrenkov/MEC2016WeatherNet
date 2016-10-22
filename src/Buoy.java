@@ -1,5 +1,3 @@
-import com.sun.prism.shader.Solid_Color_AlphaTest_Loader;
-
 import java.util.ArrayList;
 
 public class Buoy extends Transceiver {
