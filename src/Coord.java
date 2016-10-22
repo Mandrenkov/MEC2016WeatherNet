@@ -22,9 +22,9 @@ public class Coord {
 
 		double dist = getDist(m.getLocation(), recv.getLocation());
 
-		double sd = (c / (dist * Math.sqrt(2 * Math.pow(stddev, 2) * Math.PI)))
-		sd *= Math.exp((-1)*( Math.pow(m.getFreq() - recv.getListenFreq(), 2) )/( 2 * Math.pow(stddev, 2) )));
-
+		double sd = (c / (dist * Math.sqrt(2 * Math.pow(stddev, 2) * Math.PI)));
+		sd *= Math.exp((-1)*( Math.pow(m.getFreq() - recv.getListenFreq(), 2) )/( 2 * Math.pow(stddev, 2) ));
+		return sd;
 	}
 
 	private double getDist(Coord a, Coord b){

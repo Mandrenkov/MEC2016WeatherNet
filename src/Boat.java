@@ -12,7 +12,8 @@ public class Boat extends Transceiver {
 	}
 
 	public Message send() {
-		return new Message((int) System.currentTimeMillis(), this.location, this.id, "hello world", Message.CHATTER);
+		return new Message((int) System.currentTimeMillis(), this.location,
+				this.id, "hello world", Message.CHATTER, 1.0, 1.0);
 	}
 
 	public void receive(Message message) {
