@@ -3,26 +3,31 @@ public class Message {
     private Coord position;
     private int senderID;
     private String content, type;
-    private double freq;
+    private double freq, strength;
     public static final String CHATTER = "chatter";
-    Message(int time, Coord position, int senderID, String content, String type, double freq){
+    Message(int time, Coord position, int senderID, String content, String type, double freq, double strength){
         this.time = time;
         this.position = position;
         this.senderID = senderID;
         this.content = content;
         this.type = type;
         this.freq = freq;
+        this.strength = strength;
     }
 
-    public double getFreq(){
-        return this.freq;
+    public double getStrength() {
+        return this.strength;
     }
 
-    public Coord getLocation(){
+    public Coord getLocation() {
         return this.position;
     }
 
-    public double getStrength(){
-        return 1;
+    public double getFreq() {
+        return this.freq;
+    }
+
+    public String getContent() {
+        return this.content;
     }
 }
