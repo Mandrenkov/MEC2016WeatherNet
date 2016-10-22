@@ -29,7 +29,7 @@ public class Boat extends Transceiver {
 		ArrayList<Message> list = new ArrayList<Message>();
 		if (rand.nextDouble() < this.chatterChance) {
 			list.add(new Message((int) System.currentTimeMillis(), this.location,
-					this.id, "hello world", Message.CHATTER, 1.0, 1.0));
+					this.id, "hello world", Message.MsgType.CHATTER, 1.0, 1.0));
 		}
 		return list;
 	}
