@@ -8,15 +8,14 @@ public abstract class Transceiver {
 	protected double listenFactor;
 	protected Coord location;
 	protected double sendFactor;
-	protected double listenFreq;
-	protected double sendFreq;
+	protected double sendFrequency;
 
-	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double listenFreq, double sendFreq) {
+	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double sendFrequency) {
 		this.id = id;
 		this.listenFactor = listenFactor;
 		this.location = location;
 		this.sendFactor = sendFactor;
-		this.listenFreq = listenFreq;
+		this.sendFrequency = sendFrequency;
 	}
 
 	public int getID() {
@@ -31,12 +30,8 @@ public abstract class Transceiver {
 		return this.listenFactor;
 	}
 
-	public double getListenFreq() {
-		return this.listenFreq;
-	}
-
-	public double getSendFreq() {
-		return this.sendFreq;
+	public double getSendFrequency() {
+		return this.sendFrequency;
 	}
 
 	public double getSendFactor() {
