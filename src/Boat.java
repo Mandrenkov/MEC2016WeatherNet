@@ -2,8 +2,8 @@ public class Boat extends Transceiver {
 
 	private String name;
 
-	public Boat(int id, float listenFactor, Coord location, String name, float sendFactor) {
-		super(id, listenFactor, location, sendFactor, 1, 1);
+	public Boat(int id, double listenFactor, Coord location, String name, double sendFactor) {
+		super(id, listenFactor, location, sendFactor, 1);
 		this.name = name;
 	}
 
