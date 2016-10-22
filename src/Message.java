@@ -26,4 +26,8 @@ public class Message {
     public double getFreq() {
         return this.freq;
     }
+
+    public String getContent() {
+        return this.content;
+    }
 }
