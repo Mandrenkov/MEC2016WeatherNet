@@ -20,11 +20,11 @@ public class AeroSpace {
             Message mess = messages.poll();
             if (mess != null) {
                 for (Transceiver t : listeners) {
-                    t.processMessage(mess);
+                    t.receive(mess);
                 }
             }
             for (Transceiver t : listeners) {
-                messages.add(t.getMessage());
+                messages.add(t.send());
             }
         }
     }

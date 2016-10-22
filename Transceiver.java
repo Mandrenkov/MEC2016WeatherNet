@@ -30,11 +30,11 @@ public class Transceiver {
 		return this.sendFactor;
 	}
 
-	public void receive() {
+	public void receive(Message mess) {
 		
 	}
 
-	public void send() {
+	public Message send() {
 		
 	}
 }
