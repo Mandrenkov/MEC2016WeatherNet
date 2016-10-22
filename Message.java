@@ -5,7 +5,7 @@ public class Message {
     private String content, type;
     private double freq;
     public static final String CHATTER = "chatter";
-    Message(int time, Coord postion, int senderID, String content, String type, double freq){
+    Message(int time, Coord position, int senderID, String content, String type, double freq){
         this.time = time;
         this.position = position;
         this.senderID = senderID;
