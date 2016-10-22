@@ -15,4 +15,10 @@ public class Coord {
 		this.y = y;
 	}
 
+	public double noise(Transceiver sender, Transceiver recv){
+
+
+
+	}
+
 }
