@@ -14,14 +14,15 @@ public class Boat extends Transceiver {
 		return this.name;
 	}
 
-	public void receiveMessage(Message mess) {
-		System.out.println("boat " + this.getID() + " received " + mess.getContent());
+	public void receiveMessage(Message message) {
+		System.out.println("boat " + this.getID() + " received " + message.getContent());
     }
 
     public ArrayList<Message> sendMessages() {
-		ArrayList<Message> list = new ArrayList<Message>();
-		list.add(new Message((int) System.currentTimeMillis(), this.location,
+		ArrayList<Message> messages = new ArrayList<Message>();
+
+		messages.add(new Message((int) System.currentTimeMillis(), this.location,
 				this.id, "hello world", Message.CHATTER, 1.0, 1.0));
-		return list;
+		return messages;
 	}
 }
