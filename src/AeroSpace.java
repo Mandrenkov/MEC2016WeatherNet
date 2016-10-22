@@ -5,6 +5,7 @@ public class AeroSpace {
     private double width, height;
     private ArrayList<Transceiver> listeners;
     private Queue<Message> messages;
+    private final double sendConst = 100;
 
     public AeroSpace(double width, double height) {
         this.width = width;
@@ -20,7 +21,9 @@ public class AeroSpace {
             Message mess = messages.poll();
             if (mess != null) {
                 for (Transceiver t : listeners) {
-                    t.receive(mess);
+                    if (t.getLocation().distanceTo(mess.getLocation()) <= sendConst * mess.getStrength()) {
+                        t.receive(mess);
+                    }
                 }
             }
             for (Transceiver t : listeners) {
