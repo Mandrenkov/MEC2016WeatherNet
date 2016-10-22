@@ -6,7 +6,7 @@
 
 \centering
 \huge MEC 2016\\
-\normalsize Weather Tracking System\\
+\normalsize Rogue QD\\
 
 \bigskip
 \bigskip
@@ -18,12 +18,58 @@
 \end{tabular}
 
 \newpage
-
 \flushleft
 
-\section{Abstract}
+\section{Project Overview} % (fold)
 
-	Haha memes
+	The RogueQD project aims to supply a simple, clear, and efficient way for naval entities to communicate between one another. By utilizing ITU bands 4 through 6, and covering a frequency domain of 3-3000 KHz, the RogueQD projects sends and receives messages between boats and naval weather buoys. Utilizing both satellite and VLF/LF/MF radio communication, a wide variety of signals can be sent. The RogueQD project also simulates error in message relay between naval entities.
+
+	\bigskip
+
+	Boats navigating the oceans will be able to use the RogueQD project to:
+
+	\begin{itemize}
+		\item Get accurate weather data.
+		\item Send and respond to SOS distress calls.
+		\item Determine its exact location via communication with GPS-equipped buoys. 
+	\end{itemize}
+
+	% section project_overview (end)
+
+\section{Assumptions} % (fold)
+
+	\begin{enumerate}
+		\item Boats have AM radio transceivers that can transmit and listen along the 3-3000 KHz band.
+		\item Weather buoys in the sea are equipped with a transceiver at least as capable as the one the boats are equipped with.
+		\item Weather buoys are also equipped with a SCU (Satellite Communications Unit), enabling a GPS unit and centralized relay.
+		\item Along the selected frequency domain band, a signal sent should always be received correctly if sent from within 250 km.
+		\item Buoys are equipped with weather tracking sensors.
+	\end{enumerate}
+
+	% section assumptions (end)
+
+\section{Technical Details} % (fold)
+
+	The RogueQD project is written in Java - a cross-platform and system-compatible programming language. Java is used heavily in computer systems around the world, and is arguably the world's most used programming language. Java can run on Windows, MacOS, Linux, and even *BSD systems!
+
+	\bigskip
+
+	The RogueQD project has taken on an OO (Object Oriented) approach, in order to simplify the architectural structure of the software system. This kind of methodology is particularly useful when modeling real-world entities, as the RogueQD project aims to do.
+
+	\bigskip
+
+	The project used a private repository on GitHub to keep track of the source code. The technology used here is Git - a world-renown system that sees much use in industry.
+
+	\bigskip
+
+	For compilation and testing, the Java 1.8.0\_91 compiler was used, along with a custom makefile for automating compilation process.
+
+% section technical_details (end)
+
+\section{Internal States} % (fold)
+\label{sec:internal_states}
+
+% section internal_states (end)
 
 
 \end{document}
