@@ -41,7 +41,7 @@ public abstract class Transceiver {
 		return this.sendFactor;
 	}
 	
-	public abstract void receive(Message mess);
+	public abstract void receiveMessages();
 
-	public abstract Message send();
+	public abstract void sendMessages();
 }
