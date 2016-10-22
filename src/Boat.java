@@ -11,7 +11,7 @@ public class Boat extends Transceiver {
 		return this.name;
 	}
 
-	public void receiveMessages() {
+	public Message receiveMessage(Message message) {
 
     }
 

@@ -6,7 +6,7 @@ public class Buoy extends Transceiver {
         super(id, listenFactor, location, sendFactor, listenFreq, sendFreq);
     }
 
-    public void receiveMessages() {
+    public Message receiveMessage(Message message) {
         //System.out.println("buoy " + this.getID() + " received " + mess.getContent());
     }
 
