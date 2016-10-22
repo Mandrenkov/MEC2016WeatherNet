@@ -13,4 +13,12 @@ public class Message {
         this.type = type;
         this.freq = freq;
     }
+
+    public double getFreq(){
+        return this.freq;
+    }
+
+    public Coord getLocation(){
+        return this.position;
+    }
 }

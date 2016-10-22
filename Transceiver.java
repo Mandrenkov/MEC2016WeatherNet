@@ -6,7 +6,6 @@ public abstract class Transceiver {
 	protected float listenFactor;
 	protected Coord location;
 	protected float sendFactor;
-
 	public Transceiver(int id, float listenFactor, Coord location, float sendFactor) {
 		this.id = id;
 		this.listenFactor = listenFactor;
@@ -29,7 +28,7 @@ public abstract class Transceiver {
 	public float getSendFactor() {
 		return this.sendFactor;
 	}
-
+	
 	public abstract void receive(Message mess);
 
 	public abstract Message send();
