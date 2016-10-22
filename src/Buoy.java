@@ -35,7 +35,7 @@ public class Buoy extends Transceiver {
     }
 
     public ArrayList<SatMessage> sendSatMessages() {
-        ArrayList<SatMessage> copy = (ArrayList<SatMessage>) this.pendingSends.clone();
+        ArrayList<SatMessage> copy = new ArrayList<>(this.pendingSends);
         this.pendingSends = new ArrayList<SatMessage>();
         return copy;
     }
