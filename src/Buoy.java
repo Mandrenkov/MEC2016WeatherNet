@@ -39,7 +39,20 @@ public class Buoy extends Transceiver {
     }
 
     private String senseWeather() {
-        return "it's raining outside :(";
+        switch (rand.nextInt(7)) {
+            case 0:
+                return "it's raining outside :(";
+            case 1:
+                return "it's sunny outside :)";
+            case 2:
+                return "oh no, hurricane :o";
+            case 3:
+                return "windy :---)";
+            case 4:
+                return "more rain D:";
+            default:
+                return "clear skies :D";
+        }
     }
 
     public void receiveSatMessage(SatMessage satm) {
