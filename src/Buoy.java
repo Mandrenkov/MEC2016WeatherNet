@@ -5,6 +5,7 @@ public class Buoy extends Transceiver {
     private static final double WEATHER_CHANCE = 0.01d;
 
     private double sendFrequency;
+    private ArrayList<SatMessage> pendingSends = new ArrayList<>();
 
     public Buoy(int id, double listenFactor, Coord location, double sendFactor, double sendFrequency) {
         super(id, listenFactor, location, sendFactor, sendFrequency);
@@ -17,6 +18,9 @@ public class Buoy extends Transceiver {
 
     public void receiveMessage(Message message) {
         System.out.println("buoy " + this.getID() + " received " + message.getContent());
+        if (message.getType() == Message.MsgType.SOS) {
+            this.pendingSends.add(new SatMessage(this, null, message));
+        }
     }
 
     public ArrayList<Message> sendMessages() {
@@ -28,7 +32,18 @@ public class Buoy extends Transceiver {
         return messages;
     }
 
+    public ArrayList<SatMessage> sendSatMessages() {
+        ArrayList<SatMessage> copy = (ArrayList<SatMessage>) this.pendingSends.clone();
+        this.pendingSends = new ArrayList<SatMessage>();
+        return copy;
+    }
+
     private String senseWeather() {
         return "it's raining outside :(";
+    }
+
+    public void receiveSatMessage(SatMessage satm) {
+        System.out.println("buoy " + this.getID() + " satreceived "
+                + satm.getContent() + " " + satm.getContent().getContent());
     }
 }

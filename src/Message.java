@@ -5,7 +5,25 @@ public class Message {
     private String content;
     private double freq, strength;
     public enum MsgType {CHATTER, WEATHER, SOS};
+
+    public int getTime() {
+        return time;
+    }
+
+    public Coord getPosition() {
+        return position;
+    }
+
+    public MsgType getType() {
+        return type;
+    }
+
     private MsgType type;
+
+    public int getSenderID() {
+        return senderID;
+    }
+
     Message(int time, Coord position, int senderID, String content, MsgType type, double freq, double strength){
         this.time = time;
         this.position = position;
