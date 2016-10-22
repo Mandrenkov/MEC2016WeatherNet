@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Message {
     private int time;
     private Coord position;
@@ -48,5 +50,15 @@ public class Message {
 
     public String getContent() {
         return this.content;
+    }
+
+    public void garble(double integrity) {
+        Random rand = new Random();
+        char[] array = this.content.toCharArray();
+        for (int i=0; i < array.length; i++) {
+            if (rand.nextDouble() > integrity) {
+                array[i] = array[rand.nextInt(array.length)];
+            }
+        }
     }
 }
