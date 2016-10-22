@@ -11,7 +11,7 @@ public class Buoy extends Transceiver {
         this.sendFrequency = sendFrequency;
     }
 
-    public double[] getFrequencyBounds() {
+    public static double[] getFrequencyBounds() {
         return Buoy.frequencyBounds;
     }
 
@@ -22,7 +22,7 @@ public class Buoy extends Transceiver {
     public ArrayList<Message> sendMessages() {
         ArrayList<Message> messages = new ArrayList<Message>();
         if (Math.random() < Buoy.WEATHER_CHANCE) {
-            messages.add(new Message((int) System.currentTimeMillis(), this.location, this.id, "hello world", Message.CHATTER, 1.0, 1.0));
+            messages.add(new Message((int) System.currentTimeMillis(), this.location, this.id, "hello world", Message.MsgType.CHATTER, 1.0, 1.0));
         }
         return messages;
     }

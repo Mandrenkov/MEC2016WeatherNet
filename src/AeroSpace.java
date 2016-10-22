@@ -30,6 +30,13 @@ public class AeroSpace {
                     messages.add(m);
                 }
             }
+            synchronized (this) {
+                try {
+                    wait(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

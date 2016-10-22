@@ -20,8 +20,6 @@ public abstract class Transceiver {
 		this.sendFrequency = sendFrequency;
 	}
 
-	public abstract double[] getFrequencyBounds();
-
 	public int getID() {
 		return this.id;
 	}
