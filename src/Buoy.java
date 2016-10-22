@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Buoy extends Transceiver {
-    protected static double[] buoyFrequencyBounds = {3.0d, 100.0d};
+    protected static final double[] frequencyBounds = {3.0d, 100.0d};
 
     private double sendFrequency;
 
@@ -11,7 +11,7 @@ public class Buoy extends Transceiver {
     }
 
     public double[] getFrequencyBounds() {
-        return buoyFrequencyBounds;
+        return Buoy.frequencyBounds;
     }
 
     public void receiveMessage(Message message) {
