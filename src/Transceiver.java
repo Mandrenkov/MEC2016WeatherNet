@@ -1,23 +1,27 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Transceiver {
 
-	//public Airspace;
+	protected static final double SOS_FREQUENCY = 500.0;
 
 	protected int id;
 	protected double listenFactor;
 	protected Coord location;
 	protected double sendFactor;
-	protected double listenFreq;
-	protected double sendFreq;
+	protected double sendFrequency;
+	protected Random rand = new Random();
 
-	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double listenFreq, double sendFreq) {
+
+	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double sendFrequency) {
 		this.id = id;
 		this.listenFactor = listenFactor;
 		this.location = location;
 		this.sendFactor = sendFactor;
-		this.listenFreq = listenFreq;
+		this.sendFrequency = sendFrequency;
 	}
+
+	public abstract double[] getFrequencyBounds();
 
 	public int getID() {
 		return this.id;
@@ -31,16 +35,16 @@ public abstract class Transceiver {
 		return this.listenFactor;
 	}
 
-	public double getListenFreq() {
-		return this.listenFreq;
-	}
-
-	public double getSendFreq() {
-		return this.sendFreq;
+	public double getSendFrequency() {
+		return this.sendFrequency;
 	}
 
 	public double getSendFactor() {
 		return this.sendFactor;
+	}
+
+	public double getSOSFrequency() {
+		return Transceiver.SOS_FREQUENCY;
 	}
 	
 	public abstract void receiveMessage(Message message);

@@ -18,12 +18,12 @@ public class Coord {
 		this.y = y;
 	}
 
-	public double noise(Transceiver recv, Message m){
+	public double noise(Transceiver recv, Message m, double listenFrequency){
 
 		double dist = getDist(m.getLocation(), recv.getLocation());
 
 		double sd = (mltplr / (dist * Math.sqrt(2 * Math.pow(stddev, 2) * Math.PI)));
-		sd *= Math.exp((-1)*( Math.pow(m.getFreq() - recv.getListenFreq(), 2) )/( 2 * Math.pow(stddev, 2) ));
+		sd *= Math.exp((-1)*( Math.pow(m.getFreq() - listenFrequency, 2) )/( 2 * Math.pow(stddev, 2) ));
 		sd *= m.getStrength() * recv.getListenFactor();
 
 		return 1;
