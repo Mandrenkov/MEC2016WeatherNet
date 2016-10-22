@@ -13,8 +13,8 @@ public class Boat extends Transceiver {
 		return this.name;
 	}
 
-	public void receiveMessage(Message message) {
-
+	public void receiveMessage(Message mess) {
+		System.out.println("boat " + this.getID() + " received " + mess.getContent());
     }
 
     public ArrayList<Message> sendMessages() {
