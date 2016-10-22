@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Transceiver {
 
@@ -9,6 +10,8 @@ public abstract class Transceiver {
 	protected Coord location;
 	protected double sendFactor;
 	protected double sendFrequency;
+	protected Random rand = new Random();
+
 
 	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double sendFrequency) {
 		this.id = id;
