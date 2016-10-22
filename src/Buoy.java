@@ -28,6 +28,10 @@ public class Buoy extends Transceiver {
         return list;
     }
 
+    public ArrayList<SatMessage> sendSatMessages() {
+        return new ArrayList<SatMessage>();
+    }
+
     private String senseWeather() {
         return "it's raining outside :(";
     }
