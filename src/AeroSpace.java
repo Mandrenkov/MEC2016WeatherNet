@@ -1,10 +1,9 @@
-import java.util.ArrayList;
-import java.util.Queue;
+import java.util.*;
 
 public class AeroSpace {
     private double width, height;
-    private ArrayList<Transceiver> listeners;
-    private Queue<Message> messages;
+    private ArrayList<Transceiver> listeners = new ArrayList<>();
+    private Queue<Message> messages = new LinkedList<Message>();
     private final double sendConst = 100;
 
     public AeroSpace(double width, double height) {
