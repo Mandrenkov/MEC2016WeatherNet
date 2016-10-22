@@ -8,9 +8,9 @@ public class Main {
 		AeroSpace AS = new AeroSpace(aeroSize, aeroSize);
         Random r = new Random();
         for (int i=0; i < 10; i++) {
-            AS.addTransceiver(new Buoy(i, new Coord(r.nextInt(aeroSize), r.nextInt(aeroSize))));
+            AS.addTransceiver(new Buoy(i, 1.0, new Coord(r.nextInt(aeroSize), r.nextInt(aeroSize)), 1.0, 500.0));
             AS.addTransceiver(new Boat(i+10, 1.0, new Coord(r.nextInt(aeroSize), r.nextInt(aeroSize)),
-                    "boat"+Integer.toString(i+10), 1.0));
+                    "boat"+Integer.toString(i+10), 1.0, 500.0));
         }
         AS.run();
 	}
