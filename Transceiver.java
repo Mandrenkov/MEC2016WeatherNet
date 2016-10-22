@@ -7,8 +7,9 @@ public abstract class Transceiver {
 	protected Coord location;
 	protected double sendFactor;
 	protected double listenFreq;
+	protected double sendFreq;
 
-	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double listenFreq) {
+	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double listenFreq, double sendFreq) {
 		this.id = id;
 		this.listenFactor = listenFactor;
 		this.location = location;
@@ -30,6 +31,10 @@ public abstract class Transceiver {
 
 	public double getListenFreq() {
 		return this.listenFreq;
+	}
+
+	public double getSendFreq() {
+		return this.sendFreq;
 	}
 
 	public double getSendFactor() {

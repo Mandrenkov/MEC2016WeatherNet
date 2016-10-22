@@ -25,6 +25,8 @@ public class Coord {
 		double sd = (mltplr / (dist * Math.sqrt(2 * Math.pow(stddev, 2) * Math.PI)));
 		sd *= Math.exp((-1)*( Math.pow(m.getFreq() - recv.getListenFreq(), 2) )/( 2 * Math.pow(stddev, 2) ));
 		sd *= m.getStrength() * recv.getListenFactor();
+
+		return 1;
 	}
 
 	private double getDist(Coord a, Coord b){

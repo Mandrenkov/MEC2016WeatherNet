@@ -21,4 +21,8 @@ public class Message {
     public Coord getLocation(){
         return this.position;
     }
+
+    public double getStrength(){
+        return 1;
+    }
 }

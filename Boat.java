@@ -2,8 +2,8 @@ public class Boat extends Transceiver {
 
 	private String name;
 
-	public Boat(int id, float listenFactor, Coord location, String name, float sendFactor) {
-		super(id, listenFactor, location, sendFactor);
+	public Boat(int id, double listenFactor, Coord location, double sendFactor, double listenFreq, double sendFreq, String name) {
+		super(id, listenFactor, location, sendFactor, listenFreq, sendFreq);
 		this.name = name;
 	}
 
@@ -12,7 +12,7 @@ public class Boat extends Transceiver {
 	}
 
 	public Message send() {
-		return new Message((int) System.currentTimeMillis(), this.location, this.id, "hello world", Message.CHATTER);
+		return new Message((int) System.currentTimeMillis(), this.location, this.id, "hello world", Message.CHATTER, this.getSendFreq());
 	}
 
 	public void receive(Message message) {
