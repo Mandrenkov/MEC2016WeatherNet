@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Boat extends Transceiver {
 
 	private String name;
@@ -11,12 +13,14 @@ public class Boat extends Transceiver {
 		return this.name;
 	}
 
-	public Message receiveMessage(Message message) {
-
+	public void receiveMessage(Message mess) {
+		System.out.println("boat " + this.getID() + " received " + mess.getContent());
     }
 
-    public void sendMessages() {
-		Message m = new Message((int) System.currentTimeMillis(), this.location,
-				this.id, "hello world", Message.CHATTER, 1.0, 1.0);
+    public ArrayList<Message> sendMessages() {
+		ArrayList<Message> list = new ArrayList<Message>();
+		list.add(new Message((int) System.currentTimeMillis(), this.location,
+				this.id, "hello world", Message.CHATTER, 1.0, 1.0));
+		return list;
 	}
 }
