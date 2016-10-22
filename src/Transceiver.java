@@ -3,8 +3,6 @@ import java.util.Random;
 
 public abstract class Transceiver {
 
-	//public Airspace;
-
 	protected int id;
 	protected double listenFactor;
 	protected Coord location;
@@ -20,6 +18,8 @@ public abstract class Transceiver {
 		this.sendFactor = sendFactor;
 		this.sendFrequency = sendFrequency;
 	}
+
+	public abstract double[] getFrequencyBounds();
 
 	public int getID() {
 		return this.id;

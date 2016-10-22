@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Boat extends Transceiver {
+	protected static double[] boatFrequencyBounds = {150.0d, 250.0d};
 
 	private String name;
 	private double sendFrequency;
@@ -10,6 +11,10 @@ public class Boat extends Transceiver {
 	public Boat(int id, double listenFactor, Coord location, String name, double sendFactor, double sendFrequency) {
 		super(id, listenFactor, location, sendFactor, sendFrequency);
 		this.name = name;
+	}
+
+	public double[] getFrequencyBounds() {
+		return boatFrequencyBounds;
 	}
 
 	public String getName() {

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Buoy extends Transceiver {
+    protected static double[] buoyFrequencyBounds = {3.0d, 100.0d};
 
     private double sendFrequency;
     private final double weatherChance = .01;
@@ -8,6 +9,10 @@ public class Buoy extends Transceiver {
     public Buoy(int id, double listenFactor, Coord location, double sendFactor, double sendFrequency) {
         super(id, listenFactor, location, sendFactor, sendFrequency);
         this.sendFrequency = sendFrequency;
+    }
+
+    public double[] getFrequencyBounds() {
+        return buoyFrequencyBounds;
     }
 
     public void receiveMessage(Message message) {
