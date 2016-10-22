@@ -22,8 +22,13 @@ public class Buoy extends Transceiver {
     public ArrayList<Message> sendMessages() {
         ArrayList<Message> list = new ArrayList<Message>();
         if (rand.nextDouble() < this.weatherChance) {
-            list.add(new Message((int) System.currentTimeMillis(), this.location, this.id, "hello world", Message.MsgType.CHATTER, 1.0, 1.0));
+            list.add(new Message((int) System.currentTimeMillis(), this.location, this.id,
+                    this.senseWeather(), Message.MsgType.WEATHER, 1.0, 1.0));
         }
         return list;
+    }
+
+    private String senseWeather() {
+        return "it's raining outside :(";
     }
 }
