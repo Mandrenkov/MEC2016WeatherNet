@@ -26,4 +26,16 @@ public class Message {
     public double getFreq() {
         return this.freq;
     }
+
+    public double getFreq(){
+        return this.freq;
+    }
+
+    public Coord getLocation(){
+        return this.position;
+    }
+
+    public double getStrength(){
+        return 1;
+    }
 }

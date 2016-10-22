@@ -3,15 +3,18 @@ public abstract class Transceiver {
 	//public Airspace;
 
 	protected int id;
-	protected float listenFactor;
+	protected double listenFactor;
 	protected Coord location;
-	protected float sendFactor;
+	protected double sendFactor;
+	protected double listenFreq;
+	protected double sendFreq;
 
-	public Transceiver(int id, float listenFactor, Coord location, float sendFactor) {
+	public Transceiver(int id, double listenFactor, Coord location, double sendFactor, double listenFreq, double sendFreq) {
 		this.id = id;
 		this.listenFactor = listenFactor;
 		this.location = location;
 		this.sendFactor = sendFactor;
+		this.listenFreq = listenFreq;
 	}
 
 	public int getID() {
@@ -22,14 +25,22 @@ public abstract class Transceiver {
 		return this.location;
 	}
 
-	public float getListenFactor() {
+	public double getListenFactor() {
 		return this.listenFactor;
 	}
 
-	public float getSendFactor() {
-		return this.sendFactor;
+	public double getListenFreq() {
+		return this.listenFreq;
 	}
 
+	public double getSendFreq() {
+		return this.sendFreq;
+	}
+
+	public double getSendFactor() {
+		return this.sendFactor;
+	}
+	
 	public abstract void receive(Message mess);
 
 	public abstract Message send();
