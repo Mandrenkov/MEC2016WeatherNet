@@ -1,11 +1,11 @@
-public class Transceiver {
+public abstract class Transceiver {
 
 	//public Airspace;
 
-	private int id;
-	private float listenFactor;
-	private Coord location;
-	private float sendFactor;
+	protected int id;
+	protected float listenFactor;
+	protected Coord location;
+	protected float sendFactor;
 
 	public Transceiver(int id, float listenFactor, Coord location, float sendFactor) {
 		this.id = id;
@@ -30,11 +30,7 @@ public class Transceiver {
 		return this.sendFactor;
 	}
 
-	public void receive(Message mess) {
-		
-	}
+	public abstract void receive(Message mess);
 
-	public Message send() {
-		
-	}
+	public abstract Message send();
 }
