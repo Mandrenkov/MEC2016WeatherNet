@@ -22,12 +22,14 @@ public class AeroSpace {
             if (mess != null) {
                 for (Transceiver t : listeners) {
                     if (t.getLocation().distanceTo(mess.getLocation()) <= sendConst * mess.getStrength()) {
-                        t.receive(mess);
+                        t.receiveMessage(mess);
                     }
                 }
             }
             for (Transceiver t : listeners) {
-                messages.add(t.send());
+                for (Message m : t.sendMessages()) {
+                    messages.add(m);
+                }
             }
         }
     }

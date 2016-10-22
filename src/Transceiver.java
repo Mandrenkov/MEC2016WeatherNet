@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Transceiver {
 
 	//public Airspace;
@@ -43,5 +45,5 @@ public abstract class Transceiver {
 	
 	public abstract void receiveMessages();
 
-	public abstract void sendMessages();
+	public abstract ArrayList<Message> sendMessages();
 }

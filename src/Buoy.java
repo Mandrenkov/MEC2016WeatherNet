@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Buoy extends Transceiver {
 
     private static final double listenFactor = 1.0, sendFactor = 1.0, listenFreq = 500.0, sendFreq = 200.0;
@@ -7,10 +9,10 @@ public class Buoy extends Transceiver {
     }
 
     public void receiveMessages() {
-        //System.out.println("buoy " + this.getID() + " received " + mess.getContent());
+        System.out.println("buoy " + this.getID() + " received " + mess.getContent());
     }
 
-    public void sendMessages() {
+    public ArrayList<Message> sendMessages() {
         Message m =  new Message((int) System.currentTimeMillis(), this.location,
                 this.id, "hello world", Message.CHATTER, 1.0, 1.0);
     }
