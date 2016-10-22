@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Boat extends Transceiver {
-	protected static double[] boatFrequencyBounds = {150.0d, 250.0d};
+	protected static final double[] frequencyBounds = {150.0d, 250.0d};
 
 	private String name;
 	private double sendFrequency;
@@ -14,7 +14,7 @@ public class Boat extends Transceiver {
 	}
 
 	public double[] getFrequencyBounds() {
-		return boatFrequencyBounds;
+		return Boat.frequencyBounds;
 	}
 
 	public String getName() {
