@@ -3,6 +3,11 @@
 ### Members: Ian Prins & Mikhail Andrenkov & Ori Almog 
 
 
+Ian Prins - prinsij@mcmaster.ca
+Mikhail ANdrenkov - andrem5@mcmaster.ca
+Ori Almog - almogo@mcmaster.ca
+
+
 PRESENTATION: Pres/Presentation.pdf
 
 DOCUMENTATION: Doc/doc.pdf
