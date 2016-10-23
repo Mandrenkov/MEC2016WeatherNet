@@ -51,6 +51,11 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Commencing WeatherNet!");
 
+		if (args.length > 0) {
+			run(setUpMessages());
+			return;
+		}
+
 		AeroSpace AS = new AeroSpace(AERO_SIZE, AERO_SIZE);
 
         for (int i = 0 ; i < BOATS ; i++) {
@@ -71,22 +76,22 @@ public class Main {
         run(AS);
 	}
 
-    /*
-    AeroSpace setUpMessages() {
-        AS = new AeroSpace(TEST_AERO_SIZE, TEST_AERO_SIZE);
+    
+    private static AeroSpace setUpMessages() {
+        AS = new AeroSpace(AERO_SIZE, AERO_SIZE);
         double[] buoyRange = Buoy.getFrequencyBounds();
         double sendFrequency = buoyRange[0] + Math.random()*buoyRange[1];
-        Buoy buoy = new Buoy(BOATS + 0, 1.0, new Coord(r.nextInt(TEST_AERO_SIZE), r.nextInt(TEST_AERO_SIZE)),
-                1.0, sendFrequency);
+
+        Buoy buoy = new Buoy(BOATS + 0, 1.0, new Coord(AERO_SIZE/2 + r.nextInt(TEST_AERO_SIZE), AERO_SIZE/2 + r.nextInt(TEST_AERO_SIZE)), 1.0, sendFrequency);
         buoy.setWeatherChance(.75);
         AS.addTransceiver(buoy);
         double[] boatRange = Boat.getFrequencyBounds();
         sendFrequency = boatRange[0] + Math.random()*boatRange[1];
-        Boat boat = new Boat(0, 1.0, new Coord(r.nextInt(TEST_AERO_SIZE), r.nextInt(TEST_AERO_SIZE)),
+        Boat boat = new Boat(0, 1.0, new Coord(AERO_SIZE/2 + r.nextInt(TEST_AERO_SIZE), AERO_SIZE/2 + r.nextInt(TEST_AERO_SIZE)),
                 "SS " + (65 + r.nextInt(26)), .5, sendFrequency);
         boat.setFireChance(.75);
         boat.setChatterChance(.75);
         AS.addTransceiver(boat);
         return AS;
-    }*/
+    }
 }

@@ -6,7 +6,7 @@ public class Buoy extends Transceiver {
     private static final double[] frequencyBounds = {3.0d, 100.0d};
     
     // Chance of sending a weather message
-    private static final double WEATHER_CHANCE = 0.01d;
+    private static double weatherChance = 0.01d;
 
     // Frequency for sending messages
     private double sendFrequency;
@@ -36,7 +36,7 @@ public class Buoy extends Transceiver {
     // Returns an ArrayList of messages to send
     public ArrayList<Message> sendMessages() {
         ArrayList<Message> messages = new ArrayList<Message>();
-        if (Math.random() < this.WEATHER_CHANCE) {
+        if (Math.random() < this.weatherChance) {
             messages.add(new Message((long) System.currentTimeMillis(), this.location, this.id,
                     this.senseWeather(), Message.MsgType.WEATHER, 1.0, 1.0));
         }
@@ -72,5 +72,10 @@ public class Buoy extends Transceiver {
     public void receiveSatMessage(SatMessage satm) {
         System.out.println("Buoy \"" + this.getID() + "\" satreceived \""
                 + satm.getContent() + "\" " + satm.getContent().getContent());
+    }
+
+    // Sets the chance of weather occurring
+    public void setWeatherChance(double weatherChance) {
+        this.weatherChance = weatherChance;
     }
 }

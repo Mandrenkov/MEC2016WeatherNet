@@ -1,23 +1,35 @@
 import java.util.*;
 
+/* Represents the air space in the sea */
 public class AeroSpace {
+    // List of transceivers
     public static ArrayList<Transceiver> listeners = new ArrayList<>();
 
+    // Width and height of the space
     private double width, height;
+
+    // Message queue
     private Queue<Message> messages = new LinkedList<Message>();
+    
+    // Send constant
     private final double sendConst = 50;
 
+    // Constructor
     public AeroSpace(double width, double height) {
         this.width = width;
         this.height = height;
     }
 
+    // Adds a transceiver to the list of known transceivers
     public void addTransceiver(Transceiver t) {
         listeners.add(t);
     }
 
+    // Runs the simulation
     public void run() {
+        // Infinite loop
         while (true) {
+            // Check for message
             Message mess = messages.poll();
             if (mess != null) {
                 for (Transceiver t : listeners) {
@@ -55,7 +67,8 @@ public class AeroSpace {
             }
             synchronized (this) {
                 try {
-                    wait(100);
+                    // Wait for 1000 ms
+                    wait(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

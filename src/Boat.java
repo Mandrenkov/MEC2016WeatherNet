@@ -12,7 +12,7 @@ public class Boat extends Transceiver {
 	private double sendFrequency;
 
 	// Message type chances
-	private final double chatterChance = .01, fireChance = .01;
+	private static double chatterChance = .01, fireChance = .01;
 
 	// Boat constructor
 	public Boat(int id, double listenFactor, Coord location, String name, double sendFactor, double sendFrequency) {
@@ -49,4 +49,14 @@ public class Boat extends Transceiver {
 		}
 		return list;
 	}
+
+	// Sets the chance of fire occurring
+    public void setFireChance(double fireChance) {
+        this.fireChance = fireChance;
+    }
+
+    // Sets the chance of fire occurring
+    public void setChatterChance(double chatterChance) {
+        this.chatterChance = chatterChance;
+    }
 }
