@@ -36,4 +36,12 @@ public class Coord {
 	private double getDist(Coord a, Coord b){
 		return Math.sqrt(Math.pow(a.x-b.x, 2) + Math.pow(a.y-b.y, 2));
 	}
+
+	public double getX() {
+		return this.x;
+	}
+
+	public double getY() {
+		return this.y;
+	}
 }

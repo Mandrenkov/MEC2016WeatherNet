@@ -1,12 +1,12 @@
 public class Message {
-    private int time;
+    private long time;
     private Coord position;
     private int senderID;
     private String content;
     private double freq, strength;
     public enum MsgType {CHATTER, WEATHER, SOS};
 
-    public int getTime() {
+    public long getTime() {
         return time;
     }
 
@@ -24,7 +24,7 @@ public class Message {
         return senderID;
     }
 
-    Message(int time, Coord position, int senderID, String content, MsgType type, double freq, double strength){
+    Message(long time, Coord position, int senderID, String content, MsgType type, double freq, double strength){
         this.time = time;
         this.position = position;
         this.senderID = senderID;

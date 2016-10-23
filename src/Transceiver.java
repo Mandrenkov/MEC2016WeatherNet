@@ -43,6 +43,10 @@ public abstract class Transceiver {
 	public double getSOSFrequency() {
 		return Transceiver.SOS_FREQUENCY;
 	}
+
+	public void move(double deltaX, double deltaY) {
+		location = new Coord(location.getX() + deltaX, location.getY() + deltaY);
+	}
 	
 	public abstract void receiveMessage(Message message);
 

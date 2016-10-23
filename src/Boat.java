@@ -27,11 +27,11 @@ public class Boat extends Transceiver {
     public ArrayList<Message> sendMessages() {
 		ArrayList<Message> list = new ArrayList<Message>();
 		if (Math.random() < this.chatterChance) {
-			list.add(new Message((int) System.currentTimeMillis(), this.location,
+			list.add(new Message((long) System.currentTimeMillis(), this.location,
 					this.id, "hello world", Message.MsgType.CHATTER, this.sendFrequency, 1.0));
 		}
 		if (Math.random() < this.chatterChance) {
-			list.add((new Message((int) System.currentTimeMillis(), this.location,
+			list.add((new Message((long) System.currentTimeMillis(), this.location,
 					this.id, "whoops.lightOnFire()", Message.MsgType.SOS, this.sendFrequency, 1.0)));
 		}
 		return list;

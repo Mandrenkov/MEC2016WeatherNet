@@ -1,8 +1,9 @@
 import java.util.*;
 
 public class AeroSpace {
+    public static ArrayList<Transceiver> listeners = new ArrayList<>();
+
     private double width, height;
-    private ArrayList<Transceiver> listeners = new ArrayList<>();
     private Queue<Message> messages = new LinkedList<Message>();
     private final double sendConst = 50;
 
@@ -46,6 +47,8 @@ public class AeroSpace {
                             }
                         }
                     }
+                } else {
+                    t.move((int) (Math.random()*3) - 1, (int) (Math.random()*3) - 1);
                 }
             }
             synchronized (this) {
