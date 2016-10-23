@@ -3,18 +3,28 @@ import java.util.Random;
 import java.awt.*;
 import javax.swing.*;
 
+/* Main Execution Module */
 public class Main {
+    // Aerospace reference
     public static AeroSpace AS;
 
-	private static final int AERO_SIZE = 300;
+    // Size of aerospace
+	private static final int AERO_SIZE = 300, TEST_AERO_SIZE = 25;
+    
+    // Number of boats to simulate
     private static final int BOATS = 10;
+
+    // Number of buoys to simulate
     private static final int BUOYS = 15;
 
+    // Random object reference
     private static Random r = new Random(); 
 
+    // Runs the simulation given the provided aerospace
     public static void run(AeroSpace AS) {
         Main.AS = AS;
 
+        // Instantiate the window
         JFrame window = new JFrame("RogueQD Monitor");
 
         // Specify the size and behaviour of window
@@ -24,6 +34,7 @@ public class Main {
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Start the GUI
         new Thread() {
             public void run() {
                 window.add(new GUI(), BorderLayout.CENTER);
@@ -32,9 +43,11 @@ public class Main {
             }
         }.start();
 
+        // Run the simulation
         AS.run();
     }
 
+    // Main thread entry point
 	public static void main(String[] args) {
 		System.out.println("Commencing WeatherNet!");
 
@@ -57,4 +70,23 @@ public class Main {
 
         run(AS);
 	}
+
+    /*
+    AeroSpace setUpMessages() {
+        AS = new AeroSpace(TEST_AERO_SIZE, TEST_AERO_SIZE);
+        double[] buoyRange = Buoy.getFrequencyBounds();
+        double sendFrequency = buoyRange[0] + Math.random()*buoyRange[1];
+        Buoy buoy = new Buoy(BOATS + 0, 1.0, new Coord(r.nextInt(TEST_AERO_SIZE), r.nextInt(TEST_AERO_SIZE)),
+                1.0, sendFrequency);
+        buoy.setWeatherChance(.75);
+        AS.addTransceiver(buoy);
+        double[] boatRange = Boat.getFrequencyBounds();
+        sendFrequency = boatRange[0] + Math.random()*boatRange[1];
+        Boat boat = new Boat(0, 1.0, new Coord(r.nextInt(TEST_AERO_SIZE), r.nextInt(TEST_AERO_SIZE)),
+                "SS " + (65 + r.nextInt(26)), .5, sendFrequency);
+        boat.setFireChance(.75);
+        boat.setChatterChance(.75);
+        AS.addTransceiver(boat);
+        return AS;
+    }*/
 }

@@ -4,9 +4,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+// GUI for the application
 public class GUI extends JPanel implements ActionListener {
+    // Container to display messages
     public static JTextArea textArea = new JTextArea(5, 50);
 
+    // Constructor
     public GUI() {
         // Establish the panel layout
         setLayout(new BorderLayout());
@@ -14,17 +17,17 @@ public class GUI extends JPanel implements ActionListener {
         
         setFocusable(true);
 
-        
-
-        // Refresh rendering at maximum 60FPS
-        new Timer(1000, this).start();
+        // Refresh rendering at maximum 60 FPS
+        new Timer(1000/60, this).start();
     }
 
+    // Adds a message to the scroll text area
     public static void addMessage(Message message) {
         textArea.append(String.format("%15s : %3d + @%.1fMHz - %s\n", message.getTime(), message.getSenderID(), message.getFreq(), message.getContent()));
         textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 
+    // Displays the Boats and Buoys
     @Override
     public void paint(Graphics graphics) {
         super.paintComponent(graphics);
@@ -34,10 +37,9 @@ public class GUI extends JPanel implements ActionListener {
         // Enable anti-aliasing flags
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        // Iterate through the transceivers
         for (Transceiver t : AeroSpace.listeners) {
             g.setColor(Color.WHITE);
-
-            String idName = Integer.toString(t.id);
             
             if (t instanceof Boat) {
                 g.setColor(Color.BLUE);
@@ -51,6 +53,7 @@ public class GUI extends JPanel implements ActionListener {
         }
     }
 
+    // Refreshes the screen when an action is performed
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();

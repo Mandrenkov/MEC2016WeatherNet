@@ -1,21 +1,31 @@
 import java.util.ArrayList;
 
+/* Buoy Entity Module */
 public class Buoy extends Transceiver {
+    // Buoy send frequencies
     private static final double[] frequencyBounds = {3.0d, 100.0d};
+    
+    // Chance of sending a weather message
     private static final double WEATHER_CHANCE = 0.01d;
 
+    // Frequency for sending messages
     private double sendFrequency;
+
+    // Pending satellite messages
     private ArrayList<SatMessage> pendingSends = new ArrayList<>();
 
+    // Constructor
     public Buoy(int id, double listenFactor, Coord location, double sendFactor, double sendFrequency) {
         super(id, listenFactor, location, sendFactor, sendFrequency);
         this.sendFrequency = sendFrequency;
     }
 
+    // Returns the possible transmission frequency range
     public static double[] getFrequencyBounds() {
         return Buoy.frequencyBounds;
     }
 
+    // Procedure for receiving a message
     public void receiveMessage(Message message) {
         System.out.println("buoy " + this.getID() + " received " + message.getContent());
         if (message.getType() == Message.MsgType.SOS) {
@@ -23,6 +33,7 @@ public class Buoy extends Transceiver {
         }
     }
 
+    // Returns an ArrayList of messages to send
     public ArrayList<Message> sendMessages() {
         ArrayList<Message> messages = new ArrayList<Message>();
         if (Math.random() < this.WEATHER_CHANCE) {
@@ -32,12 +43,14 @@ public class Buoy extends Transceiver {
         return messages;
     }
 
+    // Sends satellite messages
     public ArrayList<SatMessage> sendSatMessages() {
         ArrayList<SatMessage> copy = new ArrayList<>(this.pendingSends);
         this.pendingSends = new ArrayList<SatMessage>();
         return copy;
     }
 
+    // Uses sensors to retrieve current weather information
     private String senseWeather() {
         switch (rand.nextInt(7)) {
             case 0:
@@ -55,8 +68,9 @@ public class Buoy extends Transceiver {
         }
     }
 
+    // Receive a satellite message
     public void receiveSatMessage(SatMessage satm) {
-        System.out.println("buoy " + this.getID() + " satreceived "
-                + satm.getContent() + " " + satm.getContent().getContent());
+        System.out.println("Buoy \"" + this.getID() + "\" satreceived \""
+                + satm.getContent() + "\" " + satm.getContent().getContent());
     }
 }
