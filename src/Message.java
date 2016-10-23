@@ -60,5 +60,6 @@ public class Message {
                 array[i] = array[rand.nextInt(array.length)];
             }
         }
+        this.content = new String(array);
     }
 }
