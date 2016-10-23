@@ -23,6 +23,8 @@ public class AeroSpace {
                 for (Transceiver t : listeners) {
                     if (t.getLocation().distanceTo(mess.getLocation()) <= sendConst * mess.getStrength()
                             && t.getID() != mess.getSenderID()) {
+                        System.out.println(Coord.noise(t, mess, 238));
+                        mess.garble(Coord.noise(t, mess, 100));
                         t.receiveMessage(mess);
                     }
                 }
