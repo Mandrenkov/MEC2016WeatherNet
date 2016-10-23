@@ -55,6 +55,8 @@
 		\item Weather buoys are also equipped with a SCU (Satellite Communications Unit), enabling a GPS unit and centralized relay.
 		\item Along the selected frequency domain band, a signal sent should always be received correctly if sent from within 250 km.
 		\item Buoys are equipped with weather tracking sensors.
+		\item Buoys cannot move.
+		\item Boats can move.
 	\end{enumerate}
 
 	% section assumptions (end)
@@ -115,6 +117,15 @@
 
 		Boats can listen and transmit at any frequency (i.e. in $f_{T}$).
 
+		\bigskip
+
+		Some constants are defined below, used in mathematical formulas later on:
+
+		\begin{itemize}
+			\item[] $c = 188$
+			\item[] $\sigma = 0.3$
+		\end{itemize}
+
 	\subsection{Full Technical Overview}
 
 		A buoy $\Delta_{i}$ collects weather data $M_{\omega}$ and sends it on $f_{\Delta_{i}}$. This is a periodic activity. Boats can listen in on this report and acquire $M_{\omega}$.
@@ -122,6 +133,53 @@
 		\bigskip
 
 		Boats can send a distress signal on \fsos KHz. All buoys that receive the signal send a satellite message $M_{sos}$ to the centralized satellite via their SCU. The satellite then relays $M_{sos}$ to all buoys. At this point all buoys broadcast $M_{sos}$ on $f_{\Delta_{i}}$. This process ensures that anyone listening to a buoy will receive notification of the SOS distress call.
+
+		\bigskip
+
+		A specific band is designated for boat-to-boat communications, that is \fbl to \fbh KHz. On this band there are no buoy interjections. Boats that have planned their journey can agree to speak on a certain frequency without fear of a buoy overlapping with their broadcast.
+
+		\bigskip
+
+		There are two important factors to consider when determining whether or not a signal is received or not:
+
+		\begin{itemize}
+			\item Distance
+			\item Frequency delta
+		\end{itemize}
+
+		The farther away a receiver is, the less likely it is that the message will reach. Also, if the listening frequency differs from the bradcast frequency, chances are slim that the message will be caught.
+
+		\bigskip
+
+		The probability of a message $M$ reaching its recipient can be modeled by:
+
+		\bigskip
+		\centering
+
+		$p(M) = \frac{c S_{b} S_{r} e^{(\frac{-(f_{b}-f_{r})^2}{2\sigma^{2}})}}{\sqrt{d2\pi\sigma^{2}}}$
+
+		\flushleft
+		\bigskip
+
+		Where $S_{b}$ is the signal broadcast strength, $S_{r}$ is the signal reception strength, $f_{b}$ is the broadcast frequency, $f_{r}$ is the reception frequency, and d is the distance in km.
+
+		\bigskip
+
+		The equation returns a number greater than 0.
+
+		\begin{itemize}
+			\item A result that is very close to 0 indicates that the message did not send.
+			\item A result that is 1 or larger indicates that the message was sent with complete success.
+			\item A result between 0 and 1 indicated that the message was sent, but not entirely successfully. The closer the number is to 1, the better the message quality.
+		\end{itemize}
+
+		Messages that sent with a $p(M)$ between 0 and 1 are scrambled and confused. They may contain static, cut out, or otherwise be damaged.
+
+		\bigskip
+
+		The equation represents the mathematical model for normal distribution, with some alterations.
+
+
 
 % section internal_states (end)
 
