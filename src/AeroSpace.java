@@ -26,13 +26,13 @@ public class AeroSpace {
                         System.out.println(Coord.noise(t, mess, 238));
                         mess.garble(Coord.noise(t, mess, 100));
                         t.receiveMessage(mess);
+                        GUI.addMessage(mess);
                     }
                 }
             }
             for (Transceiver t : listeners) {
                 for (Message m : t.sendMessages()) {
                     messages.add(m);
-                    GUI.addMessage(m);
                 }
                 if (t instanceof Buoy) {
                     for (SatMessage satm : ((Buoy) t).sendSatMessages()) {
