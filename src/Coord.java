@@ -18,22 +18,30 @@ public class Coord {
 		this.y = y;
 	}
 
-	public double noise(Transceiver recv, Message m, double listenFrequency){
+	public static double noise(Transceiver recv, Message m, double listenFrequency){
+		final double maxDist = 35;
+		double integrity = 1.1;
+		double distance = recv.getLocation().distanceTo(m.getLocation());
+		System.out.println("distance: " + distance);
+		if (distance > maxDist) {
+			integrity *= 1-((distance - maxDist) / maxDist);
+		}
+		return integrity;/*
 
 		double dist = getDist(m.getLocation(), recv.getLocation());
 
-		double sd = (mltplr / (dist * Math.sqrt(2 * Math.pow(stddev, 2) * Math.PI)));
-		sd *= Math.exp((-1)*( Math.pow(m.getFreq() - listenFrequency, 2) )/( 2 * Math.pow(stddev, 2) ));
+		double sd = (mltplr / (dist * Math.sqrt(2 * stddev*stddev * Math.PI)));
+		sd *= Math.exp((-1)*( Math.pow(m.getFreq() - listenFrequency, 2) )/( 2 * stddev*stddev ));
 		sd *= m.getStrength() * recv.getListenFactor();
 
-		return 1;
+		return sd;*/
 	}
 
 	public double distanceTo(Coord other) {
 		return getDist(this, other);
 	}
 
-	private double getDist(Coord a, Coord b){
+	private static double getDist(Coord a, Coord b){
 		return Math.sqrt(Math.pow(a.x-b.x, 2) + Math.pow(a.y-b.y, 2));
 	}
 }
